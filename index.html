@@ -1,1095 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bra-Strap Growth Protocol — Routine + GK Keratin + Sell/Donate</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&family=Fraunces:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  /* ===========================
-     CARA PORTFOLIO-LIKE THEME
-     Light, editorial, minimal
-     =========================== */
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bra-Strap Growth Protocol</title>
 
-  :root{
-    /* base */
-    --bg: #fbfbfa;
-    --bg2:#ffffff;
-    --panel:#ffffff;
-    --panel2:#ffffff;
+  <!-- Fonts: editorial serif + clean mono/sans (close to your portfolio vibe) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 
-    /* text */
-    --text:#141414;
-    --text-dim:#4a4a4a;
-    --muted:#6a6a6a;
+  <style>
+    :root{
+      --bg:#fbfbfa; --bg2:#ffffff;
+      --text:#151515; --text2:#3f3f3f; --muted:#6a6a6a;
+      --line:#e7e7e4; --line2:#d9d9d6;
+      --max:1100px;
+      --r:16px;
+      --shadow:0 14px 40px rgba(0,0,0,.06);
+      --serif:"Cormorant Garamond", Georgia, serif;
+      --mono:"DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55}
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 
-    /* lines */
-    --border:#e6e6e4;
-    --border-strong:#d9d9d6;
+    /* HERO */
+    .hero{padding:70px 0 26px}
+    .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+    h1{font-family:var(--serif);font-weight:400;line-height:1.03;margin:0 0 10px;font-size:clamp(40px,5vw,66px)}
+    .sub{font-family:var(--serif);font-style:italic;color:var(--text2);max-width:760px;margin:8px 0 0;font-size:18px}
+    .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .pill{border:1px solid var(--line);background:var(--bg2);border-radius:999px;padding:7px 12px;font-size:12px;color:var(--text2);box-shadow:0 8px 22px rgba(0,0,0,.04)}
 
-    /* accents (subtle + restrained) */
-    --accent:#141414;         /* primary ink */
-    --accent-soft:#2b2b2b;    /* hover ink */
-    --accent-warm:#b9a27a;    /* optional warm highlight */
-    --accent-cool:#5b6b7a;    /* optional cool highlight */
+    /* NAV */
+    .nav{
+      position:sticky;top:0;z-index:10;
+      background:rgba(251,251,250,.88);
+      backdrop-filter:blur(10px);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex;gap:10px;overflow:auto;padding:10px 0}
+    .tab{
+      border:1px solid var(--line);
+      background:var(--bg2);
+      border-radius:999px;
+      padding:10px 14px;
+      font-family:var(--mono);
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--text2);
+      cursor:pointer;
+      white-space:nowrap;
+      transition:transform .12s ease,border-color .12s ease,color .12s ease;
+    }
+    .tab:hover{transform:translateY(-1px);border-color:var(--line2);color:var(--text)}
+    .tab.active{border-color:var(--text);color:var(--text)}
+    .nav-inner::-webkit-scrollbar{display:none}
 
-    /* layout */
-    --maxw: 1100px;
-    --radius: 14px;
-    --shadow: 0 10px 30px rgba(0,0,0,0.06);
+    /* SECTIONS */
+    main{padding:0 0 90px}
+    .section{display:none;padding-top:36px}
+    .section.active{display:block}
+    .section-head{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid var(--line)}
+    .label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+    h2{font-family:var(--serif);font-weight:400;margin:0;font-size:34px}
+    .desc{margin:10px 0 0;color:var(--text2);font-family:var(--serif);font-style:italic;font-size:18px;max-width:900px}
+    .tag{display:inline-block;margin-top:14px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--bg2)}
 
-    /* type */
-    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    --serif: "Cormorant Garamond", "Times New Roman", Times, serif;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
+    /* CARDS + TYPOGRAPHY FOR YOUR CONTENT */
+    .card{
+      background:var(--bg2);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      padding:18px 18px;
+      margin:0 0 14px;
+    }
+    .card h3{font-family:var(--serif);margin:0 0 8px;font-size:20px}
+    .card p{margin:0 0 10px;color:var(--text2)}
+    .card ul{margin:0;padding-left:18px;color:var(--text2)}
+    .card li{margin:6px 0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
 
-  * { box-sizing: border-box; }
-  html, body { height:100%; }
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--sans);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
-
-  a { color:inherit; text-decoration:none; }
-  a:hover { text-decoration: underline; }
-
-  /* page frame */
-  .content{
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 22px 90px;
-  }
-
-  /* HERO */
-  .hero{
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 72px 22px 38px;
-  }
-  .hero-label{
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-  .hero h1{
-    font-family: var(--serif);
-    font-size: clamp(40px, 5vw, 64px);
-    line-height: 1.05;
-    font-weight: 400;
-    margin: 0 0 14px 0;
-    color: var(--text);
-  }
-  .hero h1 em{
-    font-style: italic;
-    color: var(--text);
-  }
-  .hero-sub{
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 18px;
-    color: var(--text-dim);
-    max-width: 720px;
-    margin: 10px 0 0 0;
-  }
-  .profile-pills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top: 22px;
-  }
-  .pill{
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 7px 12px;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    color: var(--text-dim);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-  }
-
-  /* NAV (portfolio-like: clean bar + understated active state) */
-  .nav{
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(251,251,250,0.85);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    display:flex;
-    gap: 10px;
-    padding: 10px 14px;
-    overflow-x:auto;
-    scrollbar-width:none;
-  }
-  .nav::-webkit-scrollbar{ display:none; }
-
-  .nav-btn{
-    appearance:none;
-    border: 1px solid var(--border);
-    background: var(--bg2);
-    color: var(--text-dim);
-    border-radius: 999px;
-    padding: 10px 14px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    cursor:pointer;
-    white-space: nowrap;
-    transition: transform .12s ease, border-color .12s ease, color .12s ease;
-  }
-  .nav-btn:hover{
-    transform: translateY(-1px);
-    color: var(--accent-soft);
-    border-color: var(--border-strong);
-  }
-  .nav-btn.active{
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* SECTIONS */
-  .section{ display:none; }
-  .section.active{ display:block; }
-
-  .section-header{
-    padding: 48px 0 22px;
-    margin-bottom: 22px;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-header .label{
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-  .section-header h2{
-    font-family: var(--serif);
-    font-size: 34px;
-    font-weight: 400;
-    margin: 0;
-    color: var(--text);
-  }
-  .section-header p{
-    margin: 10px 0 0 0;
-    color: var(--text-dim);
-    font-family: var(--serif);
-    font-size: 18px;
-    font-style: italic;
-    max-width: 860px;
-  }
-  .cadence-tag{
-    display:inline-block;
-    margin-top: 14px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: var(--bg2);
-  }
-
-  /* CALL OUTS (clean, portfolio-like) */
-  .alert, .tip{
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    margin: 0 0 18px 0;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.05);
-  }
-  .alert strong, .tip strong{
-    color: var(--text);
-    font-family: var(--mono);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 11px;
-  }
-  .alert p, .tip p{
-    margin: 8px 0 0 0;
-    color: var(--text-dim);
-    font-size: 14px;
-  }
-
-  /* STEP CARDS */
-  .step-grid{ display:flex; flex-direction:column; gap: 14px; }
-
-  .step-card{
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow:hidden;
-    box-shadow: var(--shadow);
-  }
-  .step-card-header{
-    padding: 16px 18px;
-    display:flex;
-    align-items:flex-start;
-    gap: 14px;
-    border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, #ffffff 0%, #fcfcfb 100%);
-  }
-
-  .step-num{
-    font-family: var(--serif);
-    font-size: 28px;
-    line-height: 1;
-    font-weight: 600;
-    color: var(--text);
-    min-width: 42px;
-  }
-  .step-name h3{
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0;
-  }
-  .step-name .step-desc{
-    margin-top: 4px;
-    font-size: 12px;
-    color: var(--muted);
-    font-family: var(--mono);
-    letter-spacing: 0.04em;
-  }
-  .step-timing{
-    margin-left:auto;
-    text-align:right;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-
-  .step-card-body{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  @media (max-width: 980px){
-    .step-card-body{ grid-template-columns: 1fr; }
-  }
-  .step-col{
-    padding: 16px 18px;
-    border-right: 1px solid var(--border);
-  }
-  .step-col:last-child{ border-right:none; }
-
-  .col-label{
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .step-col ul{ list-style:none; margin:0; padding:0; }
-  .step-col ul li{
-    padding: 4px 0;
-    color: var(--text-dim);
-    font-size: 13px;
-  }
-  .step-col ul li::before{
-    content: "— ";
-    color: var(--muted);
-  }
-
-  /* product tags -> minimalist pills */
-  .product-tag{
-    display:inline-block;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 6px 10px;
-    font-size: 12px;
-    color: var(--text-dim);
-    margin: 4px 6px 0 0;
-  }
-
-  /* recipe box -> clean inset */
-  .recipe-box{
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 12px;
-  }
-  .recipe-box .recipe-title{
-    font-family: var(--serif);
-    font-size: 15px;
-    font-style: italic;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-  .ingredient{
-    display:flex;
-    gap: 10px;
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-  .ingredient:last-child{ border-bottom:none; }
-  .ingredient-amt{
-    min-width: 86px;
-    text-align:right;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-  }
-  .recipe-box .method{
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  .science-note{
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.75;
-  }
-  .science-note strong{
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  /* tabs */
-  .style-tabs, .protein-tabs{
-    display:flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 0 0 18px 0;
-  }
-  .style-tab, .protein-tab{
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 10px 14px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    cursor:pointer;
-  }
-  .style-tab.active, .protein-tab.active{
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* maintenance cards */
-  .maint-grid{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 24px;
-  }
-  @media (max-width: 900px){
-    .maint-grid{ grid-template-columns: 1fr; }
-  }
-  .maint-card{
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px 16px;
-    box-shadow: var(--shadow);
-  }
-  .maint-card h4{
-    font-family: var(--serif);
-    font-size: 18px;
-    margin: 0 0 10px 0;
-  }
-  .maint-card ol{
-    margin: 0;
-    padding-left: 18px;
-    color: var(--text-dim);
-    font-size: 13px;
-    line-height: 1.75;
-  }
-
-  /* supplement table */
-  table.supp-table{
-    width:100%;
-    border-collapse: collapse;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow:hidden;
-    box-shadow: var(--shadow);
-    margin-bottom: 22px;
-  }
-  table.supp-table th{
-    text-align:left;
-    padding: 12px 14px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
-    background: #ffffff;
-  }
-  table.supp-table td{
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-dim);
-    vertical-align: top;
-  }
-  table.supp-table tr:last-child td{ border-bottom:none; }
-  table.supp-table td.supp-name{ color: var(--text); font-weight: 600; }
-  table.supp-table td.supp-dose{ font-family: var(--mono); color: var(--muted); }
-
-  /* tools */
-  .tools-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-    margin: 14px 0 0 0;
-  }
-  .tool-item{
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 12px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.05);
-  }
-  .tool-item .tool-name{
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .tool-item .tool-use{
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.6;
-  }
-
-  /* footer */
-  footer{
-    border-top: 1px solid var(--border);
-    padding: 24px 22px;
-    text-align:center;
-    color: var(--muted);
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    font-size: 11px;
-    background: var(--bg);
-  }
-
-  /* print */
-  @media print{
-    .nav{ display:none; }
-    .section{ display:block !important; page-break-before: always; }
-    .section:first-of-type{ page-break-before: avoid; }
-    .style-content, .protein-content{ display:block !important; }
-  }
-</style>
-
+    /* “module text” helpers */
+    .mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted)}
+    .rule{border-top:1px solid var(--line);margin:18px 0}
+    footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-align:center}
+  </style>
 </head>
+
 <body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">Personal Hair Care System · 3C/4A · High Porosity · Fine · Straight-Style Retention</p>
+      <h1>The <em>Bra-Strap</em><br/>Growth Protocol</h1>
+      <p class="sub">A single-file guide using your owned inventory + GK keratin integration + a sell/donate module—optimized for length retention, softness, and strength rebuilding.</p>
 
-<header class="hero">
-  <div class="kicker">Personal Hair Care System · 3C/4A · High Porosity · Fine · Straight-Style Retention</div>
-  <h1>The <em>Bra-Strap</em><br/>Growth Protocol</h1>
-  <div class="sub">A single-file guide using your owned inventory + GK keratin integration + a sell/donate module—optimized for length retention, softness, and strength rebuilding.</div>
-  <div class="pills">
-    <span class="pill">3C TOP · 4A BOTTOM</span>
-    <span class="pill">HIGH POROSITY</span>
-    <span class="pill">FINE STRANDS</span>
-    <span class="pill">STRAIGHT STYLES</span>
-    <span class="pill">LENGTH RETENTION</span>
-    <span class="pill">NO STYLIST</span>
-  </div>
-</header>
-
-<nav class="nav">
-  <button class="active" onclick="showSection('routine', event)">Routine</button>
-  <button onclick="showSection('gk', event)">GK Keratin Module</button>
-  <button onclick="showSection('sell', event)">Sell / Donate Inventory</button>
-  <button onclick="showSection('rules', event)">Rules & Exclusions</button>
-</nav>
-
-<main class="wrap">
-
-  <!-- ==================== ROUTINE ==================== -->
-  <section id="routine" class="section active">
-    <div class="head">
-      <div class="label">Module 01</div>
-      <h2>Core Routine</h2>
-      <p>Built around your reality: <strong>high heat weekly</strong>, <strong>low/no heat every 3–4 days</strong>, weekly deep conditioning, finger detangling, cuticle sealing, and minimal breakage.</p>
-      <span class="tag">Cadence: High Heat = weekly · Low/No Heat = every 3–4 days</span>
-    </div>
-
-    <div class="note">
-      <strong>Outcome target:</strong>
-      <p style="margin-top:6px">Softness + smoothness are the short-term signals. The long-term signal is fewer mid-shaft snaps and calmer ends (less single-strand knotting / splitting).</p>
-    </div>
-
-    <div class="grid">
-
-      <!-- WASH ROUTINE (7-step) -->
-      <div class="card">
-        <div class="top">
-          <div class="num">01</div>
-          <div class="title">
-            <h3>Wash Routine (7-Step)</h3>
-            <div class="desc">24-hr pre-poo → day-of pre-poo → cleanse → clarify (as needed) → deep condition → rinse/seal → style</div>
-          </div>
-          <div class="time">Cycle<br/>Weekly or 3–4 days</div>
-        </div>
-        <div class="cols">
-          <div class="col">
-            <div class="clabel products">Products (from your inventory)</div>
-            <div class="chips">
-              <span class="chip">Avocado Oil</span>
-              <span class="chip">Sesame Oil</span>
-              <span class="chip">JBCO / Castor (ends)</span>
-              <span class="chip">Chebe Powder</span>
-              <span class="chip">Shikakai</span>
-              <span class="chip">Amla</span>
-              <span class="chip">Neem</span>
-              <span class="chip">Ambunu</span>
-              <span class="chip">ACV</span>
-              <span class="chip">ORS Replenishing Conditioner</span>
-              <span class="chip">Matrix Food for Soft</span>
-              <span class="chip">Hi Pro Pac</span>
-              <span class="chip">Oribe Gold Lust Mask</span>
-              <span class="chip">Oribe Gold Lust Shampoo</span>
-              <span class="chip">Nizoral (only if dandruff)</span>
-            </div>
-            <div class="warn" style="margin-top:14px">
-              <strong>Fine-strand rule:</strong>
-              <p style="margin-top:6px">Use “thin film” amounts of oils/creams. If hair feels coated or sticky, reduce solids (powders) and reduce humectants (glycerin).</p>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="clabel recipe">Recipes (fine-strand safe)</div>
-
-            <div class="recipeBox">
-              <div class="rtitle">Step 1 — 24-Hour Pre-Poo (simple + low mess)</div>
-              <div class="row"><div class="amt">1 tbsp</div><div>Avocado oil</div></div>
-              <div class="row"><div class="amt">2 tsp</div><div>Sesame oil</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>JBCO or castor (ends only)</div></div>
-              <div class="row"><div class="amt">¼ tsp</div><div>Vitamin E oil (optional)</div></div>
-              <div class="method">
-                Apply to dry hair in 4–6 sections (mid-shaft → ends). Avoid scalp for the overnight step. Cover with plastic cap + satin cap.
-              </div>
-            </div>
-
-            <div class="recipeBox">
-              <div class="rtitle">Step 2 — Day-Of Pre-Poo (hot oil scalp focus)</div>
-              <div class="row"><div class="amt">2 tbsp</div><div>Sesame oil (base)</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Mustard oil (optional; small amount)</div></div>
-              <div class="row"><div class="amt">½ tsp</div><div>Amla powder</div></div>
-              <div class="row"><div class="amt">½ tsp</div><div>Brahmi OR Bhringraj powder</div></div>
-              <div class="row"><div class="amt">Pinch</div><div>Neem powder (optional)</div></div>
-              <div class="row"><div class="amt">2–3 drops</div><div>Rosemary EO (optional)</div></div>
-              <div class="method">
-                Warm slightly (warm-touch only). Apply to scalp; massage 3–5 minutes. Cap + 20–30 minutes under warm hood/heat cap. Then cleanse thoroughly.
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col">
-            <div class="clabel rules">Step logic (what matters)</div>
-            <ul>
-              <li><strong>Co-wash</strong> = use Ambunu or conditioner when scalp is calm and you want moisture retention.</li>
-              <li><strong>Clarify</strong> = use Design Essentials Oat Protein & Henna shampoo (or Oribe shampoo) when hair feels coated / styling won’t “take.”</li>
-              <li><strong>Deep condition weekly</strong> (always) with heat + cap for 15–30 minutes.</li>
-              <li><strong>Seal cuticle after DC</strong> with a brief acidic rinse (ACV diluted), then cool rinse.</li>
-              <li><strong>Style choice</strong> determines your cadence (weekly high heat; 3–4 days low/no heat).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- DEEP CONDITION (protein tiers) -->
-      <div class="card">
-        <div class="top">
-          <div class="num">02</div>
-          <div class="title">
-            <h3>Deep Condition Routine (heat + cap)</h3>
-            <div class="desc">Low / Medium / High protein options using your conditioners + your hydrolyzed proteins</div>
-          </div>
-          <div class="time">Weekly<br/>15–30 min heat</div>
-        </div>
-        <div class="cols">
-          <div class="col">
-            <div class="clabel products">Base products</div>
-            <div class="chips">
-              <span class="chip">ORS Replenishing Conditioner</span>
-              <span class="chip">Matrix Food for Soft Conditioner</span>
-              <span class="chip">Oribe Gold Lust Mask</span>
-              <span class="chip">Hi Pro Pac (protein)</span>
-              <span class="chip">Aphogee 2-Step (rare)</span>
-              <span class="chip">Aphogee 2-Min Reconstructor (optional)</span>
-              <span class="chip">CER-100 Collagen/Ceramide</span>
-              <span class="chip">Polyquaternium-7</span>
-              <span class="chip">Hydrolyzed Keratin</span>
-              <span class="chip">Hydrolyzed Collagen</span>
-              <span class="chip">Jojoba Protein HP</span>
-            </div>
-            <div class="note" style="margin-top:14px">
-              <strong>Heat segment requirement:</strong>
-              <p style="margin-top:6px">Apply DC to clean, wet hair → plastic cap → hooded dryer/heat cap for <strong>15+ minutes</strong> (20–30 is ideal).</p>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="clabel recipe">Low / Medium / High protein recipes</div>
-
-            <div class="recipeBox">
-              <div class="rtitle">Low Protein (Moisture Focus)</div>
-              <div class="row"><div class="amt">4 tbsp</div><div>ORS Replenishing OR Oribe mask</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Polyquaternium-7</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Avocado oil</div></div>
-              <div class="row"><div class="amt">⅛ tsp</div><div>Glycerin (optional; skip if frizz)</div></div>
-              <div class="method">Heat 20 minutes. Rinse cool. Proceed to seal step.</div>
-            </div>
-
-            <div class="recipeBox">
-              <div class="rtitle">Medium Protein (weekly when rebuilding)</div>
-              <div class="row"><div class="amt">4 tbsp</div><div>ORS Replenishing (base)</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Hydrolyzed collagen</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Hydrolyzed keratin OR Jojoba Protein HP</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>CER-100 (ceramide support)</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Polyquaternium-7</div></div>
-              <div class="method">Heat 15–20 minutes. Rinse well (protein needs a thorough rinse). Seal step next.</div>
-            </div>
-
-            <div class="recipeBox">
-              <div class="rtitle">High Protein (monthly max)</div>
-              <div class="row"><div class="amt">4 tbsp</div><div>Hi Pro Pac (base)</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Hydrolyzed keratin</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Hydrolyzed collagen</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Jojoba Protein HP</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>Avocado oil (buffer)</div></div>
-              <div class="method">Heat 15 minutes. Rinse thoroughly. Next wash must be Low Protein (moisture focus).</div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="clabel rules">Seal step (post-DC)</div>
-            <div class="recipeBox">
-              <div class="rtitle">Cuticle Seal Rinse (simple + controlled)</div>
-              <div class="row"><div class="amt">1 cup</div><div>Cool water</div></div>
-              <div class="row"><div class="amt">1 tsp</div><div>ACV</div></div>
-              <div class="method">
-                After rinsing DC, pour over lengths for 20–30 seconds. Rinse out with cool water. Then apply leave-in immediately.
-              </div>
-            </div>
-            <ul style="margin-top:10px">
-              <li>Leave-in options: <strong>Magic 7</strong>, <strong>It’s a 10 + Keratin</strong>, <strong>ORS Super Silken leave-in</strong>.</li>
-              <li>Finish/seal ends: 1–2 drops <strong>BioSilk</strong> or <strong>AllPlex No.7</strong> (ends only).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- STYLING (3 modes) -->
-      <div class="card">
-        <div class="top">
-          <div class="num">03</div>
-          <div class="title">
-            <h3>Styling Routine (Natural / Low Heat / High Heat)</h3>
-            <div class="desc">Built for your stated priority: straight-style longevity + reduced reversion</div>
-          </div>
-          <div class="time">Natural/Low<br/>Every 3–4 days<br/>High Heat weekly</div>
-        </div>
-
-        <div class="cols">
-          <div class="col">
-            <div class="clabel products">Universal (all styles)</div>
-            <ul>
-              <li>Detangle: <strong>finger detangle only</strong>, 4–6 sections.</li>
-              <li>Leave-in: Magic 7 or It’s a 10 + keratin.</li>
-              <li>Seal ends: BioSilk or AllPlex No.7 (1–2 drops).</li>
-              <li>Anti-humidity topcoat (when dry): Oribe Impermeable spray (light mist).</li>
-            </ul>
-          </div>
-
-          <div class="col">
-            <div class="clabel recipe">Low Heat (preferred for retention)</div>
-            <div class="recipeBox">
-              <div class="rtitle">Heat Protect Layering (your inventory)</div>
-              <div class="row"><div class="amt">Step 1</div><div>Leave-in on damp hair (Magic 7 / ORS leave-in)</div></div>
-              <div class="row"><div class="amt">Step 2</div><div>Oribe Balm d’Or OR By Taraji heat protectant</div></div>
-              <div class="row"><div class="amt">Step 3</div><div>2–3 drops BioSilk (mid-shaft → ends)</div></div>
-              <div class="method">
-                Blow dry using low/medium heat, downward airflow. Avoid repeated passes on ends.
-              </div>
-            </div>
-            <ul style="margin-top:10px">
-              <li>Finish: Phyto repairing serum (ends) + Oribe anti-humidity (light).</li>
-            </ul>
-          </div>
-
-          <div class="col">
-            <div class="clabel rules">High Heat (weekly — keep safe)</div>
-            <ul>
-              <li>Flat iron: <strong>350–365°F</strong> typical; <strong>1–2 passes</strong> top half, <strong>2–3</strong> bottom half; ends = <strong>1 pass</strong>.</li>
-              <li>Use silicone heat protection every time (Oribe Balm d’Or / BioSilk).</li>
-              <li>Post-style: Phyto 9 (ends only) if that’s your proven finisher.</li>
-              <li>Humidity shield: Oribe Impermeable anti-humidity (finish only).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- MAINTENANCE -->
-      <div class="card">
-        <div class="top">
-          <div class="num">04</div>
-          <div class="title">
-            <h3>Maintenance (Midweek Mini + Night Protection)</h3>
-            <div class="desc">3–5 minutes: keep softness, reduce friction, protect ends</div>
-          </div>
-          <div class="time">Between washes<br/>1×</div>
-        </div>
-
-        <div class="cols">
-          <div class="col">
-            <div class="clabel products">Midweek mini (from your inventory)</div>
-            <ul>
-              <li>Mist: Magic 7 (light) OR It’s a 10 (light).</li>
-              <li>Seal: 1–2 drops avocado + sesame blend (ends/mid-shaft).</li>
-              <li>Optional: 1 drop lavender or geranium EO total (not daily).</li>
-            </ul>
-          </div>
-
-          <div class="col">
-            <div class="clabel recipe">Midweek oil seal blend</div>
-            <div class="recipeBox">
-              <div class="rtitle">Avocado + Sesame + JBCO (fine-strand ratio)</div>
-              <div class="row"><div class="amt">1 tsp</div><div>Avocado oil</div></div>
-              <div class="row"><div class="amt">½ tsp</div><div>Sesame oil</div></div>
-              <div class="row"><div class="amt">¼ tsp</div><div>JBCO (ends only)</div></div>
-              <div class="method">Rub between palms. Apply as a thin film on ends only, then smooth downward.</div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="clabel rules">Night protection</div>
-            <ul>
-              <li>Wrap or loose two braids (no tight elastics).</li>
-              <li>Satin bonnet or silk pillowcase.</li>
-              <li>Check ends weekly; trim visible splits only (your method).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ==================== GK MODULE ==================== -->
-  <section id="gk" class="section">
-    <div class="head">
-      <div class="label">Module 02</div>
-      <h2>GK Hair “The Best” Keratin Module</h2>
-      <p>A fine-strand, high-porosity modified plan that prioritizes <strong>length retention</strong>, <strong>strength rebuilding</strong>, and <strong>straight-style longevity</strong>.</p>
-      <span class="tag">Cycle: about every 10–12 weeks (not monthly)</span>
-    </div>
-
-    <div class="warn">
-      <strong>Non-negotiables:</strong>
-      <p style="margin-top:6px">
-        Ventilation + mask + gloves. Follow your reduced heat/pass rules. Do not stack heavy oils/butters before application. Do not add DIY ingredients into GK solution.
-      </p>
-    </div>
-
-    <div class="twoCol">
-      <div class="mini">
-        <h4>Prep Window (48–72 hrs before)</h4>
-        <ol>
-          <li>Stop oils, butters, heavy creams, and heavy silicone serums.</li>
-          <li>Cleanse: clarify if coated; otherwise a solid shampoo cleanse is enough.</li>
-          <li>Skip leave-in and skip oils after that wash.</li>
-          <li>Hair should be clean, product-free, fully dry on application day.</li>
-        </ol>
-      </div>
-
-      <div class="mini">
-        <h4>Tools Checklist</h4>
-        <ol>
-          <li>Blow dryer + paddle brush</li>
-          <li>Fine-tooth comb for comb-through</li>
-          <li>Sectioning clips</li>
-          <li>Ceramic flat iron with temp control (ideal)</li>
-          <li>Mask + gloves + ventilation</li>
-        </ol>
+      <div class="pills" aria-label="profile pills">
+        <span class="pill">3C TOP · 4A BOTTOM</span>
+        <span class="pill">HIGH POROSITY</span>
+        <span class="pill">FINE STRANDS</span>
+        <span class="pill">STRAIGHT STYLES</span>
+        <span class="pill">LENGTH RETENTION</span>
+        <span class="pill">NO STYLIST</span>
       </div>
     </div>
+  </header>
 
-    <div class="grid" style="margin-top:16px">
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <button class="tab active" data-target="routine">Routine</button>
+        <button class="tab" data-target="gk">GK Keratin Module</button>
+        <button class="tab" data-target="sell">Sell / Donate Inventory</button>
+        <button class="tab" data-target="rules">Rules & Exclusions</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="wrap">
+
+    <!-- ROUTINE -->
+    <section id="routine" class="section active">
+      <div class="section-head">
+        <p class="label">Module 01</p>
+        <h2>Core Routine</h2>
+        <p class="desc">Built around your reality: <strong>high heat weekly</strong>, <strong>low/no heat every 3–4 days</strong>, weekly deep conditioning, finger detangling, cuticle sealing, and minimal breakage.</p>
+        <span class="tag">Cadence: High Heat = weekly · Low/No Heat = every 3–4 days</span>
+      </div>
 
       <div class="card">
-        <div class="top">
-          <div class="num">01</div>
-          <div class="title">
-            <h3>Application Day (Modified for Fine Strands)</h3>
-            <div class="desc">Clean → dry → apply thinly → blow dry smooth → seal with controlled heat</div>
-          </div>
-          <div class="time">One session<br/>Plan time</div>
+        <h3>Wash Routine (7-step)</h3>
+        <p class="mono">24-hr pre-poo → day-of pre-poo → cleanse → clarify (as needed) → deep condition → rinse/seal → style</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>24-hour pre-poo (simple + low mess)</h3>
+          <ul>
+            <li>Avocado oil + sesame oil (thin film)</li>
+            <li>JBCO/castor only on ends</li>
+            <li>Cap + satin bonnet overnight</li>
+          </ul>
         </div>
-        <div class="cols">
-          <div class="col">
-            <div class="clabel rules">Temperature + passes (your safe settings)</div>
-            <ul>
-              <li>Top half (3C/finer): <strong>350°F</strong> · <strong>1–2 passes</strong></li>
-              <li>Bottom half (4A/more resistant): <strong>360–365°F</strong> · <strong>2–3 passes</strong></li>
-              <li>Ends: <strong>1 pass only</strong></li>
-              <li>Thin sections. No clamping hard. No repeated “chasing.”</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="clabel recipe">How to avoid over-saturation</div>
-            <div class="recipeBox">
-              <div class="rtitle">“Thin Film” Product Rule</div>
-              <div class="method">
-                Apply GK sparingly. Comb through. If hair looks wet/greasy or drips: you used too much. Wipe excess with gloved fingers before blow-drying.
-              </div>
-            </div>
-            <ul style="margin-top:10px">
-              <li>6–8 sections minimum.</li>
-              <li>Do not apply onto scalp.</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="clabel rules">Hold period (first 48–72 hrs)</div>
-            <ul>
-              <li>No washing.</li>
-              <li>No oils/butters/leave-ins.</li>
-              <li>Avoid sweating/steam.</li>
-              <li>Keep hair straight; avoid tight bends/creases.</li>
-            </ul>
-          </div>
+        <div class="card">
+          <h3>Day-of hot oil (scalp focus)</h3>
+          <ul>
+            <li>Sesame oil base (warm-touch only)</li>
+            <li>Amla + brahmi/bhringraj (tiny amounts)</li>
+            <li>Massage 3–5 min, cap, 20–30 min under warm hood/heat cap</li>
+          </ul>
         </div>
       </div>
 
       <div class="card">
-        <div class="top">
-          <div class="num">02</div>
-          <div class="title">
-            <h3>First Wash After GK (Moisture-only)</h3>
-            <div class="desc">Gentle cleanse → moisture mask → cool rinse → light finish</div>
-          </div>
-          <div class="time">Day 3–4<br/>post</div>
-        </div>
-        <div class="cols">
-          <div class="col">
-            <div class="clabel products">Use (your inventory)</div>
-            <ul>
-              <li>Shampoo: Oribe Gold Lust shampoo (or GK aftercare if included).</li>
-              <li>Mask: Oribe Gold Lust mask OR ORS replenishing (light amount).</li>
-              <li>Finish: 1–2 drops BioSilk or AllPlex No.7 on ends.</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="clabel rules">Avoid (first 2 weeks)</div>
-            <ul>
-              <li>No hard protein treatments (Aphogee 2-step).</li>
-              <li>No heavy oils/butters.</li>
-              <li>No steam deep conditioning.</li>
-              <li>No frequent clarifying unless absolutely needed.</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="clabel rules">Return to your normal plan</div>
-            <ul>
-              <li>Week 1–2 post: low-protein moisture DC only.</li>
-              <li>Week 3+: resume medium protein as needed for strength rebuilding.</li>
-              <li>Keep heat exposure lower because straight styles will last longer.</li>
-            </ul>
-          </div>
-        </div>
+        <h3>Non-negotiables (what drives retention)</h3>
+        <ul>
+          <li><strong>Deep condition weekly</strong> (cap + heat 15–30 min)</li>
+          <li><strong>Seal cuticle after DC</strong> (brief ACV rinse, then cool rinse)</li>
+          <li><strong>Thin-film rule</strong> on oils/creams to avoid coating fine strands</li>
+          <li>Clarify only when hair feels coated / styling won’t “take”</li>
+        </ul>
       </div>
 
-    </div>
-  </section>
+      <div class="card">
+        <h3>Paste your full routine text here (optional)</h3>
+        <p class="mono">If you want your exact step-by-step text to appear in this section, paste it inside this card (replace this paragraph).</p>
+      </div>
+    </section>
 
-
-  <!-- ==================== SELL/DONATE ==================== -->
-  <section id="sell" class="section">
-    <div class="head">
-      <div class="label">Module 03</div>
-      <h2>Sell / Donate Inventory Module</h2>
-      <p>Estimated resale vs donation-only based on typical secondhand demand, hygiene risk, and your updated routine direction (keratin + straight-style retention).</p>
-      <span class="tag">Goal: reduce clutter + remove counterproductive hold products</span>
-    </div>
-
-    <div class="note">
-      <strong>Rule:</strong>
-      <p style="margin-top:6px">Unopened or lightly used items have resale value; heavily used items are typically donation-only.</p>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Action</th>
-          <th>Why (for your plan)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Shea Moisture JBCO Strengthen & Restore Mask</td>
-          <td class="right">Resell (if ≥70% full) / Donate</td>
-          <td>Brand doesn’t work for you; heavy base not needed in keratin-friendly routine.</td>
-        </tr>
-        <tr>
-          <td>Camille Rose Almond Jai Twisting Butter</td>
-          <td class="right">Resell (popular) / Keep ends-only</td>
-          <td>Butter-heavy; not core to straight-style plan. Only useful sparingly on ends.</td>
-        </tr>
-        <tr>
-          <td>Curls Blueberry Bliss Curl Control Jelly</td>
-          <td class="right">Resell / Donate</td>
-          <td>Curl-definition product; your plan prioritizes straight-style longevity.</td>
-        </tr>
-        <tr>
-          <td>Phyto Joba Moisturizing Hair Gel</td>
-          <td class="right">Resell</td>
-          <td>Not needed as a styler in your straight-first plan; keep only if you still do occasional natural sets.</td>
-        </tr>
-        <tr>
-          <td>Aphogee Keratin 2 Minute Reconstructor</td>
-          <td class="right">Resell / Keep one protein option</td>
-          <td>Redundant if you already have Hi Pro Pac + hydrolyzed proteins + keratin cycles.</td>
-        </tr>
-        <tr>
-          <td>Aphogee Balancing Moisturizer</td>
-          <td class="right">Resell / Donate</td>
-          <td>Optional now; not essential with your current conditioner bases.</td>
-        </tr>
-        <tr>
-          <td>Pantene Miracle Rescue 10-in-1 Spray</td>
-          <td class="right">Resell (if unopened) / Donate</td>
-          <td>Redundant if Magic 7 + It’s a 10 are your core sprays.</td>
-        </tr>
-        <tr>
-          <td>Nisim 25 Miracle Milk</td>
-          <td class="right">Resell / Donate</td>
-          <td>Redundant leave-in category (you already have stronger preferred sprays).</td>
-        </tr>
-        <tr>
-          <td>Ako Style Super Protein Gel</td>
-          <td class="right">Donate / Discard</td>
-          <td>High stiffness risk on fine strands; not aligned to retention plan.</td>
-        </tr>
-        <tr>
-          <td>Lock In Extra Hold Wave Edge Gel</td>
-          <td class="right">Donate / Discard</td>
-          <td>Edge/hold gels are not needed; increase breakage risk at hairline/crown.</td>
-        </tr>
-        <tr>
-          <td>Instant Control Edge & Braid Gel (Max Hold)</td>
-          <td class="right">Donate / Discard</td>
-          <td>Same category; not useful for your current styling goals.</td>
-        </tr>
-        <tr>
-          <td>All Day Lax Bra Gel (Extreme Hold)</td>
-          <td class="right">Donate / Discard</td>
-          <td>Same category; not useful for your current styling goals.</td>
-        </tr>
-        <tr>
-          <td>Let’s Jam Gel (Extra Hold)</td>
-          <td class="right">Donate / Discard</td>
-          <td>Same category; not useful for your current styling goals.</td>
-        </tr>
-        <tr>
-          <td>Nizoral Anti-Dandruff Shampoo</td>
-          <td class="right">Keep only if dandruff; otherwise Donate</td>
-          <td>Useful only for active dandruff. Otherwise drying and not needed.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-
-  <!-- ==================== RULES & EXCLUSIONS ==================== -->
-  <section id="rules" class="section">
-    <div class="head">
-      <div class="label">Reference</div>
-      <h2>Rules & Exclusions</h2>
-      <p>These are hard constraints pulled from your preferences and your plan direction.</p>
-      <span class="tag">Use to keep the routine stable</span>
-    </div>
-
-    <div class="twoCol">
-      <div class="mini">
-        <h4>Excluded brands (you stated)</h4>
-        <div class="chips">
-          <span class="chip excl">Shea Moisture</span>
-          <span class="chip excl">Kinky Curly</span>
-          <span class="chip excl">Redken</span>
-          <span class="chip excl">Mielle</span>
-          <span class="chip excl">Miss Jessie’s</span>
-          <span class="chip excl">Knot Today</span>
-        </div>
-        <div style="margin-top:10px;color:var(--textDim);font-size:12px">
-          Tresemmé = on the fence (not a default choice in this plan).
-        </div>
+    <!-- GK -->
+    <section id="gk" class="section">
+      <div class="section-head">
+        <p class="label">Module 02</p>
+        <h2>GK Keratin Module</h2>
+        <p class="desc">Configured for fine strands: minimize damage, reduce heat passes, control saturation, and protect your protein/moisture balance post-treatment.</p>
+        <span class="tag">Use case: extend straight style + reduce repeated heat</span>
       </div>
 
-      <div class="mini">
-        <h4>Safety rules (DIY + essentials oils)</h4>
-        <ol>
-          <li>Essential oils: keep dilution low; avoid daily scalp use of peppermint/eucalyptus/lemongrass.</li>
-          <li>Glycerin: use sparingly; reduce if frizz increases.</li>
-          <li>Powders (chebe/ayurvedic): keep solids low on fine strands to avoid coating + friction.</li>
-          <li>Keratin window: stop oils/butters 48–72 hours pre-application.</li>
-          <li>Heat: ceramic flat iron preferred; follow pass limits.</li>
-        </ol>
+      <div class="card">
+        <h3>GK placement in the system</h3>
+        <ul>
+          <li>Do GK on a dedicated day (not combined with heavy protein treatments).</li>
+          <li>After GK: go moisture-forward for ~2 weeks; keep protein light/moderate.</li>
+          <li>Heat discipline: lowest effective temp, thin sections, limited passes.</li>
+        </ul>
       </div>
-    </div>
 
-    <div class="footer">
-      Built from your owned inventory + your cadence constraints + GK integration · Print-friendly (File → Print).
-    </div>
-  </section>
+      <div class="card">
+        <h3>Paste your GK step-by-step here</h3>
+        <p class="mono">Replace this with your GK routine once you’re ready (I’ll format it into cards and check for fine-strand risk points).</p>
+      </div>
+    </section>
 
-</main>
+    <!-- SELL / DONATE -->
+    <section id="sell" class="section">
+      <div class="section-head">
+        <p class="label">Module 03</p>
+        <h2>Sell / Donate Inventory</h2>
+        <p class="desc">This section becomes a clean, scannable inventory disposition list (keep vs sell vs donate) tied to your routine.</p>
+        <span class="tag">Goal: reduce clutter + keep only what supports retention</span>
+      </div>
 
-<script>
-  function showSection(id, ev){
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    if(ev && ev.target) ev.target.classList.add('active');
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
-</script>
+      <div class="card">
+        <h3>Paste your sell/donate list here</h3>
+        <p class="mono">Replace this with your finalized module text and I’ll format it into a “keep/sell/donate” grid without changing your categories.</p>
+      </div>
+    </section>
 
+    <!-- RULES -->
+    <section id="rules" class="section">
+      <div class="section-head">
+        <p class="label">Module 04</p>
+        <h2>Rules & Exclusions</h2>
+        <p class="desc">Your constraints and “do not use” list—kept visible so you don’t drift back into products and methods that don’t serve your goal.</p>
+        <span class="tag">Includes: brand exclusions + fine-strand rules</span>
+      </div>
+
+      <div class="card">
+        <h3>Exclusions (from you)</h3>
+        <ul>
+          <li>Exclude: Shea Moisture, Kinky Curly, Redken, Mielle, Miss Jessie’s, Knot Today</li>
+          <li>Tresemmé: on the fence</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      Built for consistency · High-porosity, fine-strand rules · Straight-style retention
+    </footer>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const sections = document.querySelectorAll(".section");
+
+    tabs.forEach(t => {
+      t.addEventListener("click", () => {
+        tabs.forEach(x => x.classList.remove("active"));
+        t.classList.add("active");
+
+        const id = t.getAttribute("data-target");
+        sections.forEach(s => s.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
 </body>
 </html>
