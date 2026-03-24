@@ -1153,7 +1153,7 @@ em, i { font-style: italic; }
     </div>
     <div class="step-body">
       <div class="products-wrap">
-            <span class="prod-pill">Oribe Gold Lust Transformative Mask</span><span class="prod-pill">Mizani Fiberfyl (protein weeks)</span><span class="prod-pill">CER-100 Collagen Ceramide Treatment</span><span class="prod-pill">Aphogee Protein Treatment</span><span class="prod-pill">High Pro Pack</span><span class="prod-pill">ORS Banana Bamboo Conditioner</span><span class="prod-pill">Shea Moisture Mask (base)</span>
+            <span class="prod-pill">Oribe Gold Lust Transformative Mask</span><span class="prod-pill">Biolage FiberStrong Fortifying Cream (Intra-Cylane)</span><span class="prod-pill">CER-100 Collagen Ceramide Treatment</span><span class="prod-pill">Aphogee 2-Step Protein Treatment (Week 4)</span><span class="prod-pill">Aphogee Two-Minute Reconstructor (Week 2)</span><span class="prod-pill">ORS Olive Oil Replenishing Conditioner</span><span class="prod-pill">Shea Moisture Mask (base)</span>
           </div>
 <div class="step-cols">
 <div><div class="recipe">
@@ -1169,7 +1169,7 @@ em, i { font-style: italic; }
 <div>
           <div class="science">
             <strong>GK Keratin Treatment:</strong> Applied treatment. Benefits last 3–5 months. No SLS shampoos. Do not wash for 72 hrs after application. Avoid excessive heat above 450°F without Oribe Balm d'Or.<br><br>
-            <strong>Mizani Fiberfyl:</strong> Bond-building protein treatment — one of the most sophisticated protein technologies available. Leave 5–10 min MAX. Always follow with a moisture DC immediately. Signs of protein overload: stiff, brittle, snapping hair — reduce protein frequency.<br><br>
+            <strong>Biolage FiberStrong (Intra-Cylane):</strong> Direct replacement for discontinued Mizani Fiberfyl 16.9oz treatment. Same active molecule — aminopropyl triethoxysilane — penetrates the cortex as a liquid and solidifies to fill structural gaps without hardening the strand. Use as leave-in on damp hair post-DC or fingertip amount on ends AM/PM. You own 3 bottles — stocked for months.<br><br>
             <strong>CER-100:</strong> Ceramide infusion. Ceramides are the lipid "mortar" between hair cells. Chemical processing depletes them. This is restorative infrastructure work, not just conditioning.<br><br>
             <strong>Cool rinse:</strong> The hair cuticle closes at lower temperatures. Rinsing with cold water physically locks treatment into the cortex.
           </div>
@@ -3012,7 +3012,7 @@ Products used: ${e.prods || 'not specified'}
 My observations:
 ${e.notes}
 
-Context: 4-week DC rotation (Moisture → Protein/Mizani Fiberfyl → Bond Repair → Scalp+Moisture). GK Keratin treatment applied. Ayurvedic pre-poo and scalp oils in use. High-porosity natural hair.
+Context: 4-week DC rotation (Moisture → Medium Protein/Biolage FiberStrong + Aphogee 2-Minute Reconstructor → Bond Repair → Week 4 Aphogee 2-Step). GK Keratin treatment applied. Ayurvedic pre-poo and scalp oils in use. High-porosity natural hair.
 
 Please: 1) Analyze what these observations indicate about moisture/protein balance, scalp health, growth progress. 2) Suggest specific adjustments for next week. 3) Flag any warning signs. 4) One product or technique recommendation from my inventory: Avocado oil, JBCO, Bhringraj, Brahmi, Amla, Chebe, Fenugreek, Oribe products, Mizani Fiberfyl, Aphogee, CER-100, AllPlex No.7, Camille Rose, ORS, It\'s a 10, Keracare Silken Seal, Leven Rose Jojoba, NOW Almond Oil.`;
 }
@@ -3415,7 +3415,7 @@ function analyzeViaClaude() {
   const name=document.getElementById('an-name').value.trim();
   const ing=document.getElementById('an-ing').value.trim();
   const link=document.getElementById('an-link').value.trim();
-  document.getElementById('claude-prompt').value=`Please analyze this hair product for my natural hair routine:\n\nProduct: ${name||'(not specified)'}\n${link?`Link: ${link}\n`:''}Ingredients: ${ing||'(not provided)'}\n\nMy context:\n- High-porosity natural coily hair\n- GK Keratin treatment applied (sulfate-free products required)\n- Weekly wash day with LOC/LCO method\n- 4-week DC rotation: Moisture → Protein (Mizani Fiberfyl) → Bond Repair → Scalp+Moisture\n- Products I use: Oribe Gold Lust, Keracare Silken Seal, Leven Rose Jojoba, NOW Almond Oil, Hollywood Beauty Biotin Oil, AllPlex No.7, CER-100, Aphogee\n- DIY: Ayurvedic scalp oils (Bhringraj, Brahmi, Fenugreek), Chebe pre-poo, Flaxseed gel\n\nPlease: 1) Buy or Skip verdict 2) Beneficial ingredients 3) Concerning ingredients 4) Where in routine it fits 5) Keratin treatment compatibility 6) Interactions with my other products`;
+  document.getElementById('claude-prompt').value=`Please analyze this hair product for my natural hair routine:\n\nProduct: ${name||'(not specified)'}\n${link?`Link: ${link}\n`:''}Ingredients: ${ing||'(not provided)'}\n\nMy context:\n- High-porosity natural coily hair\n- GK Keratin treatment applied (sulfate-free products required)\n- Weekly wash day with LOC/LCO method\n- 4-week DC rotation: Moisture → Protein (Mizani Fiberfyl) → Bond Repair → Scalp+Moisture\n- Products I use: Oribe Gold Lust, Keracare Silken Seal, Leven Rose Jojoba, NOW Almond Oil, Hollywood Beauty Biotin Oil, AllPlex No.7, CER-100, Aphogee 2-Step, Aphogee 2-Minute Reconstructor, Biolage FiberStrong (Intra-Cylane), ORS Olive Oil Replenishing Conditioner, JBCO\n- DIY: Ayurvedic scalp oils (Bhringraj, Brahmi, Fenugreek), Chebe pre-poo, Flaxseed gel\n\nPlease: 1) Buy or Skip verdict 2) Beneficial ingredients 3) Concerning ingredients 4) Where in routine it fits 5) Keratin treatment compatibility 6) Interactions with my other products`;
   openM('m-claude');
 }
 function saveProduct() {
@@ -3474,9 +3474,10 @@ const PRODUCT_DEFAULTS = [
   {name:'Oribe Balm d\'Or Heat Styling Shield',cat:'Commercial',use:'Heat protector pre-blow dry',desc:'Gold-infused thermal shield.',qty:'med'},
   {name:'CER-100 Collagen Ceramide Treatment',cat:'Commercial',use:'Week 3 bond repair rotation',desc:'Replenishes ceramides depleted by heat.',qty:'med'},
   {name:'AllPlex No.7 Bonding Oil',cat:'Commercial',use:'Week 3 bond repair rotation',desc:'Disulfide bond repair technology.',qty:'med'},
-  {name:'Aphogee Protein Treatment',cat:'Commercial',use:'High protein DC (max 4x/year)',desc:'Intensive hard protein. Full cortex reconstruction.',qty:'med'},
-  {name:'Aphogee Balancing Moisturizer',cat:'Commercial',use:'Follow all Aphogee protein',desc:'Required moisture balance after hard protein.',qty:'full'},
-  {name:'Aphogee Two-Minute Reconstructor',cat:'Commercial',use:'Medium-high protein DC',desc:'Lighter than Aphogee 2-step. Bridge treatment.',qty:'full'},
+  {name:'Aphogee 2-Step Protein Treatment',cat:'Commercial',use:'Week 4 HIGH protein DC — once monthly max',desc:'Hard protein. Full cortex reconstruction. Apply to clean damp hair, air or hood dry until hard, then apply Balancing Moisturizer immediately. Always follow with moisture-only DC next week.',qty:'full'},
+  {name:'Aphogee Balancing Moisturizer',cat:'Commercial',use:'Immediately after every Aphogee 2-Step — non-negotiable',desc:'Required moisture rebalance after hard protein. Apply while hair is still hard, before rinsing.',qty:'full'},
+  {name:'Aphogee Two-Minute Reconstructor',cat:'Commercial',use:'Week 2 medium protein DC',desc:'Lighter than 2-Step. 2 min leave-in, rinse. Bridge treatment for medium protein weeks.',qty:'full'},
+  {name:'Biolage FiberStrong Fortifying Cream (Intra-Cylane)',cat:'Commercial',use:'Daily ends treatment + LOC C-step + pre-heat leave-in',desc:'Contains Intra-Cylane (same molecule as Mizani Fiberfyl). Fills structural gaps in damaged cortex. Apply to damp hair post-DC as leave-in or use fingertip amount on ends AM/PM daily.',qty:'full'},
   {name:'Camille Rose Almond Jai Twisting Butter',cat:'Commercial',use:'Twist out, LOC C-step (4A bottom)',desc:'Rich butter for coilier sections.',qty:'full'},
   {name:'Camille Rose Rosemary Water',cat:'Commercial',use:'Daily refresh spray base',desc:'Rosemary water spray. Growth stimulant.',qty:'full'},
   {name:'ORS Super Silken Leave-In',cat:'Commercial',use:'LOC L-step',desc:'Lightweight protein-enriched leave-in.',qty:'full'},
@@ -4078,7 +4079,7 @@ const SESSION_STEPS = {
 
 const PROD_BY_STEP = {
   shampoo: ['Design Essentials Oat Protein & Henna Shampoo','Chi Infra Shampoo','Oribe Gold Lust Repair Shampoo','Nizoral Anti-Dandruff Shampoo','Natural Black Soap','Shikakai-Amla Clarifying Rinse (DIY)'],
-  condition: ['Oribe Gold Lust Transformative Mask','ORS Olive Oil Replenishing Conditioner','ORS Banana Bamboo Conditioner','Matrix Food for Soft Conditioner','Mizani Fiberfyl Strengthening Fix','CER-100 Collagen Ceramide Treatment','Aphogee Protein Treatment','Aphogee Two-Minute Reconstructor','Collagen-Jojoba Protein Blend (DIY)','Hibiscus Moisture Bomb DC (DIY)','Triple Protein Intensive Mask (DIY)'],
+  condition: ['Oribe Gold Lust Transformative Mask','ORS Olive Oil Replenishing Conditioner','ORS Banana Bamboo Conditioner','Matrix Food for Soft Conditioner','Biolage FiberStrong Fortifying Cream (Intra-Cylane)','CER-100 Collagen Ceramide Treatment','Aphogee 2-Step Protein Treatment','Aphogee Two-Minute Reconstructor','Collagen-Jojoba Protein Blend (DIY)','Hibiscus Moisture Bomb DC (DIY)','Triple Protein Intensive Mask (DIY)'],
   rinse: ['ACV (Apple Cider Vinegar)','Green Tea + ACV Final Rinse (DIY)','Aloe Vera'],
   leavein: ['ORS Super Silken Leave-In','It\'s a 10 Miracle Leave-In + Keratin','Pantene Miracle Rescue Spray','Crome Hair Food Leave-In','Nisim 25 Miracle Milk','Keracare Silken Seal Liquid Sheen','AllPlex No.7 Bonding Oil'],
   styling: ['Curls Blueberry Bliss Curl Jelly','Phyto Joba Moisturizing Gel','Camille Rose Almond Jai Twisting Butter','Wired Flexible Styling Cream','Ako Style Super Protein Gel','Enhanced Flaxseed Curl Gel (DIY)','Oribe Impermeable Anti-Humidity Spray','Bio Silk Silk Therapy'],
